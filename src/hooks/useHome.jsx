@@ -3,26 +3,24 @@ import {useState} from 'react';
 import useTimer from './useTimer';
 
 const useHome = () => {
-  const [numberOfTimer, setNumberOfTimer] = useState(-1);
+  const [numberOfTimer, setNumberOfTimer] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
-  const {setTime, timer, countDownTimer} = useTimer();
+  const {setTime, timer, countDownTimer, defaultTime} = useTimer();
   const navigation = useNavigation();
 
   const showModal = () => setModalVisible(true);
   const hideModal = () => setModalVisible(false);
-  const handlePress = () => {
-    setNumberOfTimer(prev => prev + 1);
-    showModal();
-  };
-  const startTimer = index => {
+
+  const startTimer = () => {
     hideModal();
-    countDownTimer(index);
+    countDownTimer(numberOfTimer);
+    setNumberOfTimer(prev => prev + 1);
   };
   return {
     modalVisible,
-    handlePress,
     setTime,
     startTimer,
+    showModal,
     timer,
     numberOfTimer,
     hideModal,

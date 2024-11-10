@@ -1,8 +1,9 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 
 const useTimer = () => {
   // setting default timer to 20 seconds for 5 timers
-  const [timer, setTimer] = useState([20, 20, 20, 20, 20]);
+  const defaultTime = useRef(20).current;
+  const [timer, setTimer] = useState([]);
   const [timerId, setTimerId] = useState([null, null, null, null, null]);
 
   const setTime = ({timerIndex, time}) => {
@@ -64,7 +65,7 @@ const useTimer = () => {
     stopTimer(timerIndex);
     setTime({
       timerIndex,
-      time: 20,
+      time: defaultTime,
     });
   };
 
@@ -73,9 +74,12 @@ const useTimer = () => {
   }, [timer]);
 
   return {
+    defaultTime,
+
     timer,
     timerId,
     setTime,
+    setTimer,
     pauseTimer,
     resetTimer,
     countDownTimer,

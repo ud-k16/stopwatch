@@ -16,12 +16,14 @@ const TimerComponent = ({
   hideModal,
   start,
 }) => {
+  console.log(index);
+
   return (
     <Modal visible={visible} transparent={true} onRequestClose={hideModal}>
       <View style={styles.container}>
         <View style={styles.userInputContainer}>
           <TextInput
-            value={timer[index]?.toString()}
+            defaultValue={timer[index]?.toString()}
             autoFocus={true}
             keyboardType="number-pad"
             style={styles.userInputStyle}
@@ -37,7 +39,7 @@ const TimerComponent = ({
         <Pressable
           style={styles.buttonStyle}
           onPress={() => {
-            start(index);
+            start();
           }}>
           <Text style={styles.buttonTextStyle}>START</Text>
         </Pressable>

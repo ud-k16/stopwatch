@@ -3,23 +3,27 @@ import {Theme} from '../utils/theme';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import useHome from '../hooks/useHome';
 import TimerComponent from '../component/TimerComponent';
+import TimerCard from '../component/TimerCard';
 
 const Home = () => {
   const {
     modalVisible,
     timer,
-    handlePress,
+    numberOfTimer,
     setTime,
     hideModal,
     startTimer,
-    numberOfTimer,
+    showModal,
   } = useHome();
 
   return (
     <View style={styles.container}>
-      <Pressable style={styles.addTimerContainer} onPress={handlePress}>
+      <Pressable style={styles.addTimerContainer} onPress={showModal}>
         <AntDesign name="pluscircleo" size={44} color={Theme.primary} />
       </Pressable>
+      {timer.map((value, index) => (
+        <TimerCard value={value} index={index} />
+      ))}
       <TimerComponent
         visible={modalVisible}
         setTime={setTime}
