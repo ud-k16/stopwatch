@@ -1,4 +1,4 @@
-import {Pressable, StyleSheet, Text, View} from 'react-native';
+import {Pressable, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {Theme} from '../utils/theme';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import useHome from '../hooks/useHome';
@@ -22,9 +22,13 @@ const Home = () => {
       <Pressable style={styles.addTimerContainer} onPress={showModal}>
         <AntDesign name="pluscircleo" size={44} color={Theme.primary} />
       </Pressable>
-      {timer.map((value, index) => (
-        <TimerCard value={value} index={index} pauseTimer={pause} />
-      ))}
+      <ScrollView
+        contentContainerStyle={styles.scrollViewContentContainer}
+        style={styles.scrollViewContainer}>
+        {timer.map((value, index) => (
+          <TimerCard value={value} index={index} pauseTimer={pause} />
+        ))}
+      </ScrollView>
       <TimerComponent
         visible={modalVisible}
         setTime={setTime}
@@ -45,6 +49,12 @@ const styles = StyleSheet.create({
   },
   addTimerContainer: {
     alignSelf: 'flex-end',
+  },
+  scrollViewContentContainer: {
+    rowGap: 30,
+  },
+  scrollViewContainer: {
+    marginBottom: 40,
   },
 });
 export default Home;
