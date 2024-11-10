@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     padding: 20,
     height: '100%',
     backgroundColor: Theme.white,
+    rowGap: 25,
   },
   addTimerContainer: {
     alignSelf: 'flex-end',
