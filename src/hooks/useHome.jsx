@@ -11,7 +11,7 @@ const useHome = () => {
     defaultTime,
     pauseTimer,
     resetTimer,
-    timerId,
+    timerRunningId,
   } = useTimer();
 
   const showModal = () => setModalVisible(true);
@@ -38,6 +38,7 @@ const useHome = () => {
     numberOfTimer,
     hideModal,
     resetTimer,
+    timerRunningId,
   };
 };
 export default useHome;

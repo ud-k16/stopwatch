@@ -11,6 +11,7 @@ const Home = () => {
     defaultValue,
     timer,
     numberOfTimer,
+    timerRunningId,
     setTime,
     hideModal,
     startTimer,
@@ -34,6 +35,7 @@ const Home = () => {
             index={index}
             pauseTimer={pause}
             resetTimer={resetTimer}
+            timerRunning={!!timerRunningId[index]}
           />
         ))}
       </ScrollView>

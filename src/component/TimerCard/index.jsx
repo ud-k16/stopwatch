@@ -2,18 +2,35 @@ import {StyleSheet, Text, View} from 'react-native';
 import {Theme} from '../../utils/theme';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
-const TimerCard = ({value, index, pauseTimer, resetTimer}) => {
+const TimerCard = ({
+  value,
+  index,
+  pauseTimer,
+  resetTimer,
+  timerRunning = false,
+}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.textStyle}>{value}</Text>
-      <AntDesign
-        name="pausecircleo"
-        size={44}
-        color={Theme.accent}
-        onPress={() => {
-          pauseTimer(index);
-        }}
-      />
+      {timerRunning ? (
+        <AntDesign
+          name="pausecircleo"
+          size={44}
+          color={Theme.accent}
+          onPress={() => {
+            pauseTimer(index);
+          }}
+        />
+      ) : (
+        <AntDesign
+          name="playcircleo"
+          size={44}
+          color={Theme.accent}
+          onPress={() => {
+            pauseTimer(index);
+          }}
+        />
+      )}
       <Text
         style={styles.resetTextStyle}
         onPress={() => {

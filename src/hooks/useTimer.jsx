@@ -10,7 +10,13 @@ const useTimer = () => {
     defaultTime,
     defaultTime,
   ]);
-  const [timerId, setTimerId] = useState([null, null, null, null, null]);
+  const [timerRunningId, setTimerRunningId] = useState([
+    null,
+    null,
+    null,
+    null,
+    null,
+  ]);
 
   const setTime = ({timerIndex, time}) => {
     // intializing timer with user given time
@@ -30,16 +36,16 @@ const useTimer = () => {
       });
     }, 1000);
 
-    // setting timerId to state for processing
-    setTimerId(prev => {
+    // setting timerRunningId to state for processing
+    setTimerRunningId(prev => {
       prev[timerIndex] = id;
       return [...prev];
     });
   };
 
   const pauseTimer = timerIndex => {
-    // if timerId exist , that means timer is running hence stop it
-    if (timerId[timerIndex]) {
+    // if timerRunningId exist , that means timer is running hence stop it
+    if (timerRunningId[timerIndex]) {
       stopTimer(timerIndex);
     }
     // restart timer with already remaining time
@@ -59,9 +65,9 @@ const useTimer = () => {
 
   const stopTimer = timerIndex => {
     // stopping timer
-    clearInterval(timerId[timerIndex]);
-    // clearing timerid
-    setTimerId(prev => {
+    clearInterval(timerRunningId[timerIndex]);
+    // clearing timerRunningId
+    setTimerRunningId(prev => {
       prev[timerIndex] = null;
       return [...prev];
     });
@@ -76,14 +82,14 @@ const useTimer = () => {
   };
 
   useEffect(() => {
-    console.log(timer, ':Timer\t\t', timerId, ':TimerId');
+    console.log(timer, ':Timer\t\t', timerRunningId, ':timerRunningId');
   }, [timer]);
 
   return {
     defaultTime,
 
     timer,
-    timerId,
+    timerRunningId,
     setTime,
     setTimer,
     pauseTimer,
