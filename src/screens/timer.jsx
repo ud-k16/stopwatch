@@ -44,18 +44,6 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: Theme.accent,
   },
-  userInputStyle: {
-    fontSize: 40,
-    textAlign: 'center',
-    color: Theme.accent,
-    width: '70%',
-  },
-  unitStyle: {
-    fontSize: 20,
-    textAlign: 'center',
-    color: Theme.accent,
-    width: '30%',
-  },
   buttonStyle: {
     backgroundColor: Theme.white,
     justifyContent: 'center',
