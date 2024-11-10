@@ -13,6 +13,7 @@ const Home = () => {
     setTime,
     hideModal,
     startTimer,
+    pause,
     showModal,
   } = useHome();
 
@@ -22,7 +23,7 @@ const Home = () => {
         <AntDesign name="pluscircleo" size={44} color={Theme.primary} />
       </Pressable>
       {timer.map((value, index) => (
-        <TimerCard value={value} index={index} />
+        <TimerCard value={value} index={index} pauseTimer={pause} />
       ))}
       <TimerComponent
         visible={modalVisible}
