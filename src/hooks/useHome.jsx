@@ -6,6 +6,7 @@ const useHome = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const {
     setTime,
+    deleteTimer,
     timer,
     countDownTimer,
     defaultTime,
@@ -27,6 +28,11 @@ const useHome = () => {
     pauseTimer(index);
   };
 
+  const deleteClock = index => {
+    setNumberOfTimer(prev => prev - 1);
+    deleteTimer(index);
+  };
+
   return {
     defaultTime,
     modalVisible,
@@ -34,6 +40,8 @@ const useHome = () => {
     startTimer,
     pause,
     showModal,
+    deleteClock,
+    setNumberOfTimer,
     timer,
     numberOfTimer,
     hideModal,

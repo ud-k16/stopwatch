@@ -7,6 +7,7 @@ const TimerCard = ({
   index,
   pauseTimer,
   resetTimer,
+  deleteTimer,
   timerRunning = false,
 }) => {
   return (
@@ -38,7 +39,14 @@ const TimerCard = ({
         }}>
         Reset
       </Text>
-      <AntDesign name="delete" size={44} color={Theme.accent} />
+      <AntDesign
+        name="delete"
+        size={44}
+        color={Theme.accent}
+        onPress={() => {
+          deleteTimer(index);
+        }}
+      />
     </View>
   );
 };

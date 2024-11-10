@@ -3,20 +3,8 @@ import {useEffect, useRef, useState} from 'react';
 const useTimer = () => {
   // setting default timer to 20 seconds for 5 timers
   const defaultTime = useRef(20).current;
-  const [timer, setTimer] = useState([
-    defaultTime,
-    defaultTime,
-    defaultTime,
-    defaultTime,
-    defaultTime,
-  ]);
-  const [timerRunningId, setTimerRunningId] = useState([
-    null,
-    null,
-    null,
-    null,
-    null,
-  ]);
+  const [timer, setTimer] = useState([]);
+  const [timerRunningId, setTimerRunningId] = useState([]);
 
   const setTime = ({timerIndex, time}) => {
     // intializing timer with user given time
@@ -81,6 +69,18 @@ const useTimer = () => {
     });
   };
 
+  const deleteTimer = timerIndex => {
+    console.log(timerIndex);
+
+    // stopping timer
+    clearInterval(timerRunningId[timerIndex]);
+    setTimer(prev => {
+      return prev.filter((_, index) => index != timerIndex);
+    });
+    setTimerRunningId(prev => {
+      return prev.filter((_, index) => index != timerIndex);
+    });
+  };
   useEffect(() => {
     console.log(timer, ':Timer\t\t', timerRunningId, ':timerRunningId');
   }, [timer]);
@@ -94,6 +94,7 @@ const useTimer = () => {
     setTimer,
     pauseTimer,
     resetTimer,
+    deleteTimer,
     countDownTimer,
   };
 };
