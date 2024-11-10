@@ -1,7 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import {Theme} from '../../utils/theme';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import useTimer from '../../hooks/useTimer';
 
 const TimerCard = ({value, index, pauseTimer}) => {
   return (

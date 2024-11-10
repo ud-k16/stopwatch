@@ -6,7 +6,6 @@ const useHome = () => {
   const [numberOfTimer, setNumberOfTimer] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
   const {setTime, timer, countDownTimer, defaultTime, pauseTimer} = useTimer();
-  const navigation = useNavigation();
 
   const showModal = () => setModalVisible(true);
   const hideModal = () => setModalVisible(false);

@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 import {Theme} from '../../utils/theme';
+import {useState} from 'react';
 
 const TimerComponent = ({
   setTime,
@@ -16,22 +17,18 @@ const TimerComponent = ({
   hideModal,
   start,
 }) => {
-  console.log(index);
-
+  const [value, setValue] = useState(20);
   return (
     <Modal visible={visible} transparent={true} onRequestClose={hideModal}>
       <View style={styles.container}>
         <View style={styles.userInputContainer}>
           <TextInput
-            defaultValue={timer[index]?.toString()}
+            value={value}
             autoFocus={true}
             keyboardType="number-pad"
             style={styles.userInputStyle}
             onChangeText={text => {
-              setTime({
-                timerIndex: index,
-                time: Number(text.replace(/,/g, '')),
-              });
+              setValue(text);
             }}
           />
           <Text style={styles.unitStyle}>seconds</Text>
@@ -39,6 +36,10 @@ const TimerComponent = ({
         <Pressable
           style={styles.buttonStyle}
           onPress={() => {
+            setTime({
+              timerIndex: index,
+              time: Number(value.replace(/,/g, '')),
+            });
             start();
           }}>
           <Text style={styles.buttonTextStyle}>START</Text>
