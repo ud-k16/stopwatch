@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import {Theme} from '../../utils/theme';
 import {useState} from 'react';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const TimerComponent = ({
   setTime,
@@ -21,6 +22,13 @@ const TimerComponent = ({
   return (
     <Modal visible={visible} transparent={true} onRequestClose={hideModal}>
       <View style={styles.container}>
+        <AntDesign
+          name="closecircleo"
+          size={35}
+          color={Theme.white}
+          style={{left: '40%'}}
+          onPress={hideModal}
+        />
         <View style={styles.userInputContainer}>
           <TextInput
             value={value}
@@ -55,6 +63,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: Theme.backdrop,
+    rowGap: 30,
   },
   userInputContainer: {
     alignItems: 'center',
