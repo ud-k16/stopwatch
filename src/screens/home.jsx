@@ -22,8 +22,15 @@ const Home = () => {
 
   return (
     <View style={styles.container}>
-      <Pressable style={styles.addTimerContainer} onPress={showModal}>
-        <AntDesign name="pluscircleo" size={44} color={Theme.primary} />
+      <Pressable
+        style={styles.addTimerContainer}
+        onPress={showModal}
+        disabled={numberOfTimer == 5}>
+        <AntDesign
+          name="pluscircleo"
+          size={44}
+          color={numberOfTimer == 5 ? Theme.grey : Theme.primary}
+        />
       </Pressable>
       <ScrollView
         contentContainerStyle={styles.scrollViewContentContainer}
