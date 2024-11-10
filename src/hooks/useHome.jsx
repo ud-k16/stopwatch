@@ -5,7 +5,7 @@ import useTimer from './useTimer';
 const useHome = () => {
   const [numberOfTimer, setNumberOfTimer] = useState(-1);
   const [modalVisible, setModalVisible] = useState(false);
-  const {setTime, timer} = useTimer();
+  const {setTime, timer, countDownTimer} = useTimer();
   const navigation = useNavigation();
 
   const showModal = () => setModalVisible(true);
@@ -15,6 +15,14 @@ const useHome = () => {
     showModal();
   };
 
-  return {modalVisible, handlePress, setTime, timer, numberOfTimer, hideModal};
+  return {
+    modalVisible,
+    handlePress,
+    setTime,
+    countDownTimer,
+    timer,
+    numberOfTimer,
+    hideModal,
+  };
 };
 export default useHome;

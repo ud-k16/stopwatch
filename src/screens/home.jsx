@@ -5,8 +5,15 @@ import useHome from '../hooks/useHome';
 import TimerComponent from '../component/TimerComponent';
 
 const Home = () => {
-  const {modalVisible, timer, handlePress, setTime, hideModal, numberOfTimer} =
-    useHome();
+  const {
+    modalVisible,
+    timer,
+    handlePress,
+    setTime,
+    hideModal,
+    countDownTimer,
+    numberOfTimer,
+  } = useHome();
 
   return (
     <View style={styles.container}>
@@ -19,6 +26,7 @@ const Home = () => {
         timer={timer}
         index={numberOfTimer}
         hideModal={hideModal}
+        start={countDownTimer}
       />
     </View>
   );

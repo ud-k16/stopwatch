@@ -1,7 +1,21 @@
-import {Modal, StyleSheet, Text, TextInput, View} from 'react-native';
+import {
+  Modal,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import {Theme} from '../../utils/theme';
 
-const TimerComponent = ({setTime, index, timer = [], visible, hideModal}) => {
+const TimerComponent = ({
+  setTime,
+  index,
+  timer = [],
+  visible,
+  hideModal,
+  start,
+}) => {
   return (
     <Modal visible={visible} transparent={true} onRequestClose={hideModal}>
       <View style={styles.container}>
@@ -20,6 +34,13 @@ const TimerComponent = ({setTime, index, timer = [], visible, hideModal}) => {
           />
           <Text style={styles.unitStyle}>seconds</Text>
         </View>
+        <Pressable
+          style={styles.buttonStyle}
+          onPress={() => {
+            start(index);
+          }}>
+          <Text style={styles.buttonTextStyle}>START</Text>
+        </Pressable>
       </View>
     </Modal>
   );
@@ -53,6 +74,20 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: Theme.accent,
     width: '30%',
+  },
+  buttonStyle: {
+    backgroundColor: Theme.primary,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 50,
+    width: '50%',
+    height: '7%',
+    alignSelf: 'center',
+    marginTop: 50,
+    borderColor: Theme.white,
+  },
+  buttonTextStyle: {
+    color: Theme.white,
   },
 });
 export default TimerComponent;
