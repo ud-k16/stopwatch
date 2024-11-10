@@ -13,12 +13,12 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 const TimerComponent = ({
   setTime,
   index,
-  timer = [],
   visible,
   hideModal,
   start,
+  defaultValue,
 }) => {
-  const [value, setValue] = useState(20);
+  const [value, setValue] = useState(defaultValue);
   return (
     <Modal visible={visible} transparent={true} onRequestClose={hideModal}>
       <View style={styles.container}>

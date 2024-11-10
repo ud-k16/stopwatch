@@ -28,6 +28,7 @@ const useHome = () => {
   };
 
   return {
+    defaultTime,
     modalVisible,
     setTime,
     startTimer,
