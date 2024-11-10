@@ -1,11 +1,18 @@
-import {useNavigation} from '@react-navigation/native';
 import {useState} from 'react';
 import useTimer from './useTimer';
 
 const useHome = () => {
   const [numberOfTimer, setNumberOfTimer] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
-  const {setTime, timer, countDownTimer, defaultTime, pauseTimer} = useTimer();
+  const {
+    setTime,
+    timer,
+    countDownTimer,
+    defaultTime,
+    pauseTimer,
+    resetTimer,
+    timerId,
+  } = useTimer();
 
   const showModal = () => setModalVisible(true);
   const hideModal = () => setModalVisible(false);
@@ -29,6 +36,7 @@ const useHome = () => {
     timer,
     numberOfTimer,
     hideModal,
+    resetTimer,
   };
 };
 export default useHome;

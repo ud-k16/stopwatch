@@ -3,7 +3,13 @@ import {useEffect, useRef, useState} from 'react';
 const useTimer = () => {
   // setting default timer to 20 seconds for 5 timers
   const defaultTime = useRef(20).current;
-  const [timer, setTimer] = useState([]);
+  const [timer, setTimer] = useState([
+    defaultTime,
+    defaultTime,
+    defaultTime,
+    defaultTime,
+    defaultTime,
+  ]);
   const [timerId, setTimerId] = useState([null, null, null, null, null]);
 
   const setTime = ({timerIndex, time}) => {

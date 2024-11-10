@@ -15,6 +15,7 @@ const Home = () => {
     startTimer,
     pause,
     showModal,
+    resetTimer,
   } = useHome();
 
   return (
@@ -26,7 +27,13 @@ const Home = () => {
         contentContainerStyle={styles.scrollViewContentContainer}
         style={styles.scrollViewContainer}>
         {timer.map((value, index) => (
-          <TimerCard value={value} index={index} pauseTimer={pause} />
+          <TimerCard
+            key={index}
+            value={value}
+            index={index}
+            pauseTimer={pause}
+            resetTimer={resetTimer}
+          />
         ))}
       </ScrollView>
       <TimerComponent
