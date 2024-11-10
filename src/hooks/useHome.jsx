@@ -14,12 +14,15 @@ const useHome = () => {
     setNumberOfTimer(prev => prev + 1);
     showModal();
   };
-
+  const startTimer = index => {
+    hideModal();
+    countDownTimer(index);
+  };
   return {
     modalVisible,
     handlePress,
     setTime,
-    countDownTimer,
+    startTimer,
     timer,
     numberOfTimer,
     hideModal,

@@ -11,7 +11,7 @@ const Home = () => {
     handlePress,
     setTime,
     hideModal,
-    countDownTimer,
+    startTimer,
     numberOfTimer,
   } = useHome();
 
@@ -26,7 +26,7 @@ const Home = () => {
         timer={timer}
         index={numberOfTimer}
         hideModal={hideModal}
-        start={countDownTimer}
+        start={startTimer}
       />
     </View>
   );
