@@ -1,8 +1,7 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import useTimer from './useTimer';
 
 const useHome = () => {
-  const [numberOfTimer, setNumberOfTimer] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
   const {
     setTime,
@@ -18,10 +17,9 @@ const useHome = () => {
   const showModal = () => setModalVisible(true);
   const hideModal = () => setModalVisible(false);
 
-  const startTimer = () => {
+  const startTimer = index => {
     hideModal();
-    countDownTimer(numberOfTimer);
-    setNumberOfTimer(prev => prev + 1);
+    countDownTimer(index);
   };
 
   const pause = index => {
@@ -29,7 +27,6 @@ const useHome = () => {
   };
 
   const deleteClock = index => {
-    setNumberOfTimer(prev => prev - 1);
     deleteTimer(index);
   };
 
@@ -41,9 +38,9 @@ const useHome = () => {
     pause,
     showModal,
     deleteClock,
-    setNumberOfTimer,
+
     timer,
-    numberOfTimer,
+
     hideModal,
     resetTimer,
     timerRunningId,

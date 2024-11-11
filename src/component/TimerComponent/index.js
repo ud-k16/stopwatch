@@ -48,7 +48,7 @@ const TimerComponent = ({
               timerIndex: index,
               time: Number(value.replace(/,/g, '')),
             });
-            start();
+            start(index);
           }}>
           <Text style={styles.buttonTextStyle}>START</Text>
         </Pressable>

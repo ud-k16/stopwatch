@@ -7,6 +7,8 @@ const useTimer = () => {
   const [timerRunningId, setTimerRunningId] = useState([]);
 
   const setTime = ({timerIndex, time}) => {
+    console.log('Time setter called with ', timerIndex, time);
+
     // intializing timer with user given time
     setTimer(prev => {
       prev[timerIndex] = time;

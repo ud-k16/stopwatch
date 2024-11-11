@@ -10,7 +10,6 @@ const Home = () => {
     modalVisible,
     defaultValue,
     timer,
-    numberOfTimer,
     timerRunningId,
     setTime,
     hideModal,
@@ -26,11 +25,11 @@ const Home = () => {
       <Pressable
         style={styles.addTimerContainer}
         onPress={showModal}
-        disabled={numberOfTimer == 5}>
+        disabled={timer.length == 5}>
         <AntDesign
           name="pluscircleo"
           size={44}
-          color={numberOfTimer == 5 ? Theme.grey : Theme.primary}
+          color={timer.length == 5 ? Theme.grey : Theme.primary}
         />
       </Pressable>
       <ScrollView
@@ -52,7 +51,7 @@ const Home = () => {
         visible={modalVisible}
         setTime={setTime}
         timer={timer}
-        index={numberOfTimer}
+        index={timer.length}
         hideModal={hideModal}
         start={startTimer}
         defaultValue={defaultValue}
