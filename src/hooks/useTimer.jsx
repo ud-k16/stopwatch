@@ -72,8 +72,7 @@ const useTimer = () => {
   };
 
   const deleteTimer = timerIndex => {
-    console.log(timerIndex);
-
+    console.log(timerIndex, 'deleting index');
     // stopping timer
     clearInterval(timerRunningId[timerIndex]);
     setTimer(prev => {
@@ -89,7 +88,6 @@ const useTimer = () => {
 
   return {
     defaultTime,
-
     timer,
     timerRunningId,
     setTime,
