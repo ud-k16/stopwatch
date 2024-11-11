@@ -8,7 +8,7 @@ import TimerCard from '../component/TimerCard';
 const Home = () => {
   const {
     modalVisible,
-    defaultValue,
+    defaultTime,
     timer,
     timerRunningId,
     setTime,
@@ -54,7 +54,7 @@ const Home = () => {
         index={timer.length}
         hideModal={hideModal}
         start={startTimer}
-        defaultValue={defaultValue}
+        defaultValue={defaultTime}
       />
     </View>
   );

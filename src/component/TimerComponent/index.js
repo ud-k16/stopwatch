@@ -18,7 +18,8 @@ const TimerComponent = ({
   start,
   defaultValue,
 }) => {
-  const [value, setValue] = useState(defaultValue);
+  const [value, setValue] = useState(defaultValue?.toString());
+
   return (
     <Modal visible={visible} transparent={true} onRequestClose={hideModal}>
       <View style={styles.container}>
