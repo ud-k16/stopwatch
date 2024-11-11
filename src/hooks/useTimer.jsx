@@ -40,10 +40,6 @@ const useTimer = () => {
     }
     // restart timer with already remaining time
     else {
-      setTime({
-        timerIndex,
-        time: timer[timerIndex],
-      });
       countDownTimer(timerIndex);
     }
   };
@@ -76,6 +72,8 @@ const useTimer = () => {
     // stopping timer
     clearInterval(timerRunningId[timerIndex]);
     setTimer(prev => {
+      console.log(prev, 'in the delete timer setTimer values');
+
       return prev.filter((_, index) => index != timerIndex);
     });
     setTimerRunningId(prev => {
