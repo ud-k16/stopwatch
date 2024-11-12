@@ -12,15 +12,22 @@ const useHome = () => {
     setClock(prev => {
       const clockNumer = prev.length;
       const newClock = (
-        <TimerCard clockNumber={clockNumer} deleteClock={deleteClock} />
+        <TimerCard
+          clockNumber={clockNumer}
+          deleteClock={deleteClock}
+          key={clockNumer}
+        />
       );
       return [...prev, newClock];
     });
   };
 
   const deleteClock = clockIndex => {
+    console.log('deleting index', clockIndex);
+
     setClock(prev => {
-      prev.splice(clockIndex, 1);
+      delete prev[clockIndex];
+
       return [...prev];
     });
   };
