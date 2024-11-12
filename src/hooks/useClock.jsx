@@ -52,9 +52,11 @@ const useClock = ({userDefinedTime}) => {
   };
 
   useEffect(() => {
+    // when new timer added , user defined time is set and timer is started
     setTime(userDefinedTime);
     toggleTimer();
     return () => {
+      // on unmount setInterval is cleared
       timerRunningId && clearInterval(timerRunningId);
     };
   }, []);
