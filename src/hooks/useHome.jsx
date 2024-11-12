@@ -10,16 +10,8 @@ const useHome = () => {
   const hideModal = () => setModalVisible(false);
 
   const startClock = userDefinedTime => {
-    console.log('startClock called--------------------------------');
     const count = clock.length;
-    console.log('--------------------------------');
-    const totalValidClock = clock.reduce((total, arrayValue) => {
-      return arrayValue && total + 1;
-    }, 0);
 
-    console.log(count, 'array count in setClock');
-    console.log(totalValidClock, 'total valid clock in setClock');
-    console.log('--------------------------------');
     if (count < 5) {
       const newClock = (
         <TimerCard key={count - 1} userDefinedTime={userDefinedTime} />
@@ -27,7 +19,7 @@ const useHome = () => {
       setClock([...clock, newClock]);
     } else {
       const index = clock.findIndex(value => value == undefined);
-      console.log('else part', index);
+
       if (index != -1) {
         const newClock = (
           <TimerCard key={index} userDefinedTime={userDefinedTime} />
@@ -47,11 +39,10 @@ const useHome = () => {
   };
 
   useEffect(() => {
-    console.log(clock);
-
     const count = clock.reduce((total, arrayValue) => {
       return arrayValue && total + 1;
     }, 0);
+    // total clock count is set to decide if to enable add button or not
     setTotalClock(count);
   }, [clock]);
 
