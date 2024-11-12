@@ -6,55 +6,32 @@ import TimerComponent from '../component/TimerComponent';
 import TimerCard from '../component/TimerCard';
 
 const Home = () => {
-  const {
-    modalVisible,
-    defaultTime,
-    timer,
-    timerRunningId,
-    setTime,
-    hideModal,
-    startTimer,
-    deleteClock,
-    pause,
-    showModal,
-    resetTimer,
-  } = useHome();
+  const {modalVisible, clock, startClock, hideModal, deleteClock, showModal} =
+    useHome();
 
   return (
     <View style={styles.container}>
       <Pressable
         style={styles.addTimerContainer}
         onPress={showModal}
-        disabled={timer.length == 5}>
+        disabled={clock.length == 5}>
         <AntDesign
           name="pluscircleo"
           size={44}
-          color={timer.length == 5 ? Theme.grey : Theme.primary}
+          color={clock.length == 5 ? Theme.grey : Theme.primary}
         />
       </Pressable>
-      <ScrollView
-        contentContainerStyle={styles.scrollViewContentContainer}
-        style={styles.scrollViewContainer}>
-        {timer.map((value, index) => (
-          <TimerCard
-            key={index}
-            value={value}
-            index={index}
-            pauseTimer={pause}
-            resetTimer={resetTimer}
-            timerRunning={!!timerRunningId[index]}
-            deleteTimer={deleteClock}
-          />
-        ))}
-      </ScrollView>
+      {clock.length > 0 && (
+        <ScrollView
+          contentContainerStyle={styles.scrollViewContentContainer}
+          style={styles.scrollViewContainer}>
+          {clock.map(clock => clock)}
+        </ScrollView>
+      )}
       <TimerComponent
         visible={modalVisible}
-        setTime={setTime}
-        timer={timer}
-        index={timer.length}
         hideModal={hideModal}
-        start={startTimer}
-        defaultValue={defaultTime}
+        start={startClock}
       />
     </View>
   );

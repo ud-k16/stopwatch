@@ -10,14 +10,7 @@ import {Theme} from '../../utils/theme';
 import {useState} from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
-const TimerComponent = ({
-  setTime,
-  index,
-  visible,
-  hideModal,
-  start,
-  defaultValue,
-}) => {
+const TimerComponent = ({visible, hideModal, start, defaultValue = 20}) => {
   const [value, setValue] = useState(defaultValue?.toString());
 
   return (
@@ -45,11 +38,8 @@ const TimerComponent = ({
         <Pressable
           style={styles.buttonStyle}
           onPress={() => {
-            setTime({
-              timerIndex: index,
-              time: Number(value.replace(/,/g, '')),
-            });
-            start(index);
+            hideModal();
+            start();
           }}>
           <Text style={styles.buttonTextStyle}>START</Text>
         </Pressable>

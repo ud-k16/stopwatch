@@ -1,49 +1,37 @@
 import {useState} from 'react';
-import useTimer from './useTimer';
+import TimerCard from '../component/TimerCard';
 
 const useHome = () => {
   const [modalVisible, setModalVisible] = useState(false);
-  const {
-    setTime,
-    deleteTimer,
-    timer,
-    countDownTimer,
-    defaultTime,
-    pauseTimer,
-    resetTimer,
-    timerRunningId,
-  } = useTimer();
+  const [clock, setClock] = useState([]);
 
   const showModal = () => setModalVisible(true);
   const hideModal = () => setModalVisible(false);
 
-  const startTimer = index => {
-    hideModal();
-    countDownTimer(index);
+  const startClock = () => {
+    setClock(prev => {
+      const clockNumer = prev.length;
+      const newClock = (
+        <TimerCard clockNumber={clockNumer} deleteClock={deleteClock} />
+      );
+      return [...prev, newClock];
+    });
   };
 
-  const pause = index => {
-    pauseTimer(index);
-  };
-
-  const deleteClock = index => {
-    deleteTimer(index);
+  const deleteClock = clockIndex => {
+    setClock(prev => {
+      prev.splice(clockIndex, 1);
+      return [...prev];
+    });
   };
 
   return {
-    defaultTime,
+    clock,
     modalVisible,
-    setTime,
-    startTimer,
-    pause,
+    startClock,
     showModal,
     deleteClock,
-
-    timer,
-
     hideModal,
-    resetTimer,
-    timerRunningId,
   };
 };
 export default useHome;

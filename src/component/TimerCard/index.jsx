@@ -1,25 +1,20 @@
 import {StyleSheet, Text, View} from 'react-native';
 import {Theme} from '../../utils/theme';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import useClock from '../../hooks/useClock';
 
-const TimerCard = ({
-  value,
-  index,
-  pauseTimer,
-  resetTimer,
-  deleteTimer,
-  timerRunning = false,
-}) => {
+const TimerCard = ({clockNumber, deleteClock}) => {
+  const {pauseTimer, resetTimer, timer: value, timerRunningId} = useClock();
   return (
     <View style={styles.container}>
       <Text style={styles.textStyle}>{value}</Text>
-      {timerRunning ? (
+      {!!timerRunningId ? (
         <AntDesign
           name="pausecircleo"
           size={44}
           color={Theme.accent}
           onPress={() => {
-            pauseTimer(index);
+            pauseTimer();
           }}
         />
       ) : (
@@ -28,14 +23,14 @@ const TimerCard = ({
           size={44}
           color={Theme.accent}
           onPress={() => {
-            pauseTimer(index);
+            pauseTimer();
           }}
         />
       )}
       <Text
         style={styles.resetTextStyle}
         onPress={() => {
-          resetTimer(index);
+          resetTimer();
         }}>
         Reset
       </Text>
@@ -44,7 +39,7 @@ const TimerCard = ({
         size={44}
         color={Theme.accent}
         onPress={() => {
-          deleteTimer(index);
+          deleteClock(clockNumber);
         }}
       />
     </View>
