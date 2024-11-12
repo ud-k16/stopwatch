@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import TimerCard from '../component/TimerCard';
 
 const useHome = () => {
@@ -10,11 +10,28 @@ const useHome = () => {
   const hideModal = () => setModalVisible(false);
 
   const startClock = () => {
-    setClock(prev => {
-      const clockNumer = prev.length;
-      const newClock = <TimerCard key={clockNumer} />;
-      return [...prev, newClock];
-    });
+    console.log('startClock called--------------------------------');
+    const count = clock.length;
+    console.log('--------------------------------');
+    const totalValidClock = clock.reduce((total, arrayValue) => {
+      return arrayValue && total + 1;
+    }, 0);
+
+    console.log(count, 'array count in setClock');
+    console.log(totalValidClock, 'total valid clock in setClock');
+    console.log('--------------------------------');
+    if (count < 5) {
+      const newClock = <TimerCard key={count - 1} />;
+      setClock([...clock, newClock]);
+    } else {
+      const index = clock.findIndex(value => value == undefined);
+      console.log('else part', index);
+      if (index != -1) {
+        const newClock = <TimerCard key={index} />;
+        clock.splice(index, 1, newClock);
+        setClock([...clock]);
+      }
+    }
   };
 
   const deleteClock = clockIndex => {
@@ -27,16 +44,16 @@ const useHome = () => {
 
   useEffect(() => {
     console.log(clock);
-    setTotalClock(
-      clock.reduce((total, arrayValue) => {
-        return arrayValue && total + 1;
-      }, 0),
-    );
+
+    const count = clock.reduce((total, arrayValue) => {
+      return arrayValue && total + 1;
+    }, 0);
+    setTotalClock(count);
   }, [clock]);
 
   return {
     clock,
-    totalClock,
+    totalClock: totalClock,
     modalVisible,
     startClock,
     showModal,
