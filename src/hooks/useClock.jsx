@@ -23,7 +23,7 @@ const useClock = ({userDefinedTime}) => {
     setTimerRunningId(id);
   };
 
-  const pauseTimer = () => {
+  const toggleTimer = () => {
     // if timerRunningId exist , that means timer is running hence stop it
     if (timerRunningId) {
       stopTimer();
@@ -53,6 +53,7 @@ const useClock = ({userDefinedTime}) => {
 
   useEffect(() => {
     setTime(userDefinedTime);
+    toggleTimer();
     return () => {
       timerRunningId && clearInterval(timerRunningId);
     };
@@ -64,7 +65,7 @@ const useClock = ({userDefinedTime}) => {
     timerRunningId,
     setTime,
     setTimer,
-    pauseTimer,
+    toggleTimer,
     resetTimer,
     countDownTimer,
   };

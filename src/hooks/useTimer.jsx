@@ -33,7 +33,7 @@ const useTimer = () => {
     });
   };
 
-  const pauseTimer = timerIndex => {
+  const toggleTimer = timerIndex => {
     // if timerRunningId exist , that means timer is running hence stop it
     if (timerRunningId[timerIndex]) {
       stopTimer(timerIndex);
@@ -90,7 +90,7 @@ const useTimer = () => {
     timerRunningId,
     setTime,
     setTimer,
-    pauseTimer,
+    toggleTimer,
     resetTimer,
     deleteTimer,
     countDownTimer,

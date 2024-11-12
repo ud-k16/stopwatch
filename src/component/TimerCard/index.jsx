@@ -5,9 +5,8 @@ import useClock from '../../hooks/useClock';
 
 const TimerCard = ({userDefinedTime}) => {
   const {
-    pauseTimer,
+    toggleTimer,
     resetTimer,
-
     timer: value,
     timerRunningId,
   } = useClock({userDefinedTime});
@@ -20,7 +19,7 @@ const TimerCard = ({userDefinedTime}) => {
           size={44}
           color={Theme.accent}
           onPress={() => {
-            pauseTimer();
+            toggleTimer();
           }}
         />
       ) : (
@@ -29,7 +28,7 @@ const TimerCard = ({userDefinedTime}) => {
           size={44}
           color={Theme.accent}
           onPress={() => {
-            pauseTimer();
+            toggleTimer();
           }}
         />
       )}
