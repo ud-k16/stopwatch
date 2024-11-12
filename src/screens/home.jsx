@@ -3,10 +3,9 @@ import {Theme} from '../utils/theme';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import useHome from '../hooks/useHome';
 import TimerComponent from '../component/TimerComponent';
-import TimerCard from '../component/TimerCard';
 
 const Home = () => {
-  const {modalVisible, clock, startClock, hideModal, deleteClock, showModal} =
+  const {modalVisible, clock, startClock, deleteClock, hideModal, showModal} =
     useHome();
 
   return (
@@ -25,7 +24,19 @@ const Home = () => {
         <ScrollView
           contentContainerStyle={styles.scrollViewContentContainer}
           style={styles.scrollViewContainer}>
-          {clock.map(clock => clock)}
+          {clock.map((clock, index) => (
+            <View key={index} style={styles.cardContainer}>
+              {clock}
+              <AntDesign
+                name="delete"
+                size={44}
+                color={Theme.accent}
+                onPress={() => {
+                  deleteClock(index);
+                }}
+              />
+            </View>
+          ))}
         </ScrollView>
       )}
       <TimerComponent
@@ -51,6 +62,12 @@ const styles = StyleSheet.create({
   },
   scrollViewContainer: {
     marginBottom: 40,
+  },
+  cardContainer: {
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });
 export default Home;

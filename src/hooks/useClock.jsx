@@ -35,7 +35,7 @@ const useClock = () => {
   };
 
   const timerElapsed = () => {
-    console.log(`timer ${timerIndex} elapsed`);
+    console.log(`timer  elapsed`);
     stopTimer();
   };
 
@@ -50,6 +50,12 @@ const useClock = () => {
     stopTimer();
     setTime(defaultTime);
   };
+
+  useEffect(() => {
+    return () => {
+      timerRunningId && clearInterval(timerRunningId);
+    };
+  }, []);
 
   return {
     defaultTime,

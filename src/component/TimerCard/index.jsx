@@ -3,7 +3,7 @@ import {Theme} from '../../utils/theme';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import useClock from '../../hooks/useClock';
 
-const TimerCard = ({clockNumber, deleteClock}) => {
+const TimerCard = () => {
   const {pauseTimer, resetTimer, timer: value, timerRunningId} = useClock();
   return (
     <View style={styles.container}>
@@ -34,14 +34,6 @@ const TimerCard = ({clockNumber, deleteClock}) => {
         }}>
         Reset
       </Text>
-      <AntDesign
-        name="delete"
-        size={44}
-        color={Theme.accent}
-        onPress={() => {
-          deleteClock(clockNumber);
-        }}
-      />
     </View>
   );
 };
@@ -56,6 +48,7 @@ const styles = StyleSheet.create({
     backgroundColor: Theme.white,
     borderColor: Theme.primary,
     height: 70,
+    width: '85%',
   },
   textStyle: {
     color: Theme.accent,
