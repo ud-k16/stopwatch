@@ -5,19 +5,26 @@ import useHome from '../hooks/useHome';
 import TimerComponent from '../component/TimerComponent';
 
 const Home = () => {
-  const {modalVisible, clock, startClock, deleteClock, hideModal, showModal} =
-    useHome();
+  const {
+    modalVisible,
+    clock,
+    totalClock,
+    startClock,
+    deleteClock,
+    hideModal,
+    showModal,
+  } = useHome();
 
   return (
     <View style={styles.container}>
       <Pressable
         style={styles.addTimerContainer}
         onPress={showModal}
-        disabled={clock.length == 5}>
+        disabled={totalClock == 5}>
         <AntDesign
           name="pluscircleo"
           size={44}
-          color={clock.length == 5 ? Theme.grey : Theme.primary}
+          color={totalClock == 5 ? Theme.grey : Theme.primary}
         />
       </Pressable>
       {clock.length > 0 && (

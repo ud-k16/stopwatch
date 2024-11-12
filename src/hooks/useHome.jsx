@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import TimerCard from '../component/TimerCard';
 
 const useHome = () => {
@@ -25,8 +25,18 @@ const useHome = () => {
     });
   };
 
+  useEffect(() => {
+    console.log(clock);
+    setTotalClock(
+      clock.reduce((total, arrayValue) => {
+        return arrayValue && total + 1;
+      }, 0),
+    );
+  }, [clock]);
+
   return {
     clock,
+    totalClock,
     modalVisible,
     startClock,
     showModal,
