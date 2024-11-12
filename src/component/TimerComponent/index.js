@@ -39,7 +39,7 @@ const TimerComponent = ({visible, hideModal, start, defaultValue = 20}) => {
           style={styles.buttonStyle}
           onPress={() => {
             hideModal();
-            start();
+            start(Number(value));
           }}>
           <Text style={styles.buttonTextStyle}>START</Text>
         </Pressable>

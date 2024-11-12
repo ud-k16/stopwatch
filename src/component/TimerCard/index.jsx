@@ -3,8 +3,14 @@ import {Theme} from '../../utils/theme';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import useClock from '../../hooks/useClock';
 
-const TimerCard = () => {
-  const {pauseTimer, resetTimer, timer: value, timerRunningId} = useClock();
+const TimerCard = ({userDefinedTime}) => {
+  const {
+    pauseTimer,
+    resetTimer,
+
+    timer: value,
+    timerRunningId,
+  } = useClock({userDefinedTime});
   return (
     <View style={styles.container}>
       <Text style={styles.textStyle}>{value}</Text>

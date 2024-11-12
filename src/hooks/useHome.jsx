@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from 'react';
+import {useEffect, useState} from 'react';
 import TimerCard from '../component/TimerCard';
 
 const useHome = () => {
@@ -9,7 +9,7 @@ const useHome = () => {
   const showModal = () => setModalVisible(true);
   const hideModal = () => setModalVisible(false);
 
-  const startClock = () => {
+  const startClock = userDefinedTime => {
     console.log('startClock called--------------------------------');
     const count = clock.length;
     console.log('--------------------------------');
@@ -21,13 +21,17 @@ const useHome = () => {
     console.log(totalValidClock, 'total valid clock in setClock');
     console.log('--------------------------------');
     if (count < 5) {
-      const newClock = <TimerCard key={count - 1} />;
+      const newClock = (
+        <TimerCard key={count - 1} userDefinedTime={userDefinedTime} />
+      );
       setClock([...clock, newClock]);
     } else {
       const index = clock.findIndex(value => value == undefined);
       console.log('else part', index);
       if (index != -1) {
-        const newClock = <TimerCard key={index} />;
+        const newClock = (
+          <TimerCard key={index} userDefinedTime={userDefinedTime} />
+        );
         clock.splice(index, 1, newClock);
         setClock([...clock]);
       }
