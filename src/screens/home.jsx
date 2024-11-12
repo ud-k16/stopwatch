@@ -31,19 +31,22 @@ const Home = () => {
         <ScrollView
           contentContainerStyle={styles.scrollViewContentContainer}
           style={styles.scrollViewContainer}>
-          {clock.map((clock, index) => (
-            <View key={index} style={styles.cardContainer}>
-              {clock}
-              <AntDesign
-                name="delete"
-                size={44}
-                color={Theme.accent}
-                onPress={() => {
-                  deleteClock(index);
-                }}
-              />
-            </View>
-          ))}
+          {clock.map((clock, index) => {
+            if (!!clock)
+              return (
+                <View key={index} style={styles.cardContainer}>
+                  {clock}
+                  <AntDesign
+                    name="delete"
+                    size={44}
+                    color={Theme.accent}
+                    onPress={() => {
+                      deleteClock(index);
+                    }}
+                  />
+                </View>
+              );
+          })}
         </ScrollView>
       )}
       <TimerComponent
