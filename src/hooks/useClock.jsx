@@ -13,10 +13,7 @@ const useClock = ({userDefinedTime}) => {
 
   const countDownTimer = () => {
     const id = setInterval(() => {
-      setTimer(prev => {
-        prev == 0 ? timerElapsed() : (prev = prev - 1);
-        return prev;
-      });
+      setTimer(prev => prev - 1);
     }, 1000);
 
     // setting timerRunningId to state for processing
@@ -36,6 +33,7 @@ const useClock = ({userDefinedTime}) => {
 
   const timerElapsed = () => {
     console.log(`timer  elapsed`);
+    alert(`Timer Set for ${userDefinedTime} has elapsed`);
     stopTimer();
   };
 
@@ -60,6 +58,10 @@ const useClock = ({userDefinedTime}) => {
       timerRunningId && clearInterval(timerRunningId);
     };
   }, []);
+
+  useEffect(() => {
+    if (timer == 0) timerElapsed();
+  }, [timer]);
 
   return {
     defaultTime,
