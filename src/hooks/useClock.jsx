@@ -27,7 +27,7 @@ const useClock = ({userDefinedTime}) => {
     }
     // restart timer with already remaining time
     else {
-      countDownTimer();
+      timer != 0 && countDownTimer();
     }
   };
 
