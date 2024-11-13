@@ -65,7 +65,10 @@ const TimerComponent = ({
           style={styles.buttonStyle}
           onPress={() => {
             hideModal();
-            start({userDefinedTime: Number(value), label: clockLabel});
+            start({
+              userDefinedTime: Number(value.replace(/[\s\.]/g, '')),
+              label: clockLabel,
+            });
             // resetting value for next timer
             setValue(defaultValue?.toString());
             setPlaceHolderText(placeHolderTextDefaultValue);
