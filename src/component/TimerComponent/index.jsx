@@ -9,6 +9,7 @@ import {
 import {Theme} from '../../utils/theme';
 import {useState} from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import moderateScale from '../../utils/scale';
 
 const TimerComponent = ({
   visible,
@@ -83,7 +84,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: Theme.backdrop,
-    rowGap: 30,
+    rowGap: moderateScale(30),
   },
   userInputContainer: {
     alignItems: 'center',
@@ -91,46 +92,46 @@ const styles = StyleSheet.create({
     backgroundColor: Theme.white,
     height: '40%',
     width: '80%',
-    borderRadius: 15,
+    borderRadius: moderateScale(15),
     // borderWidth: 3,
     // borderColor: Theme.accent,
   },
   userInputStyle: {
-    fontSize: 40,
+    fontSize: moderateScale(40),
     textAlign: 'center',
     color: Theme.accent,
     width: '70%',
   },
   unitStyle: {
-    fontSize: 20,
+    fontSize: moderateScale(20),
     textAlign: 'center',
     color: Theme.accent,
     width: '30%',
   },
   labelTextStyle: {
     color: Theme.accent,
-    fontSize: 15,
+    fontSize: moderateScale(15),
     textAlign: 'center',
     width: '70%',
-    borderWidth: 1,
-    borderRadius: 5,
+    borderWidth: moderateScale(1),
+    borderRadius: moderateScale(5),
     borderColor: Theme.grey,
     backgroundColor: Theme.white,
     elevation: 6,
     shadowColor: Theme.grey,
     shadowOffset: {width: 0, height: 10},
     shadowOpacity: 0.25,
-    shadowRadius: 10,
+    shadowRadius: moderateScale(10),
   },
   buttonStyle: {
     backgroundColor: Theme.primary,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 50,
+    borderRadius: moderateScale(50),
     width: '50%',
     height: '7%',
     alignSelf: 'center',
-    marginTop: 50,
+    marginTop: moderateScale(50),
     borderColor: Theme.white,
   },
   buttonTextStyle: {

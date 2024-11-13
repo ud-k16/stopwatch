@@ -2,6 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {Theme} from '../../utils/theme';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import useClock from '../../hooks/useClock';
+import moderateScale from '../../utils/scale';
 
 const TimerCard = ({userDefinedTime, label}) => {
   const {
@@ -49,25 +50,25 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-evenly',
     elevation: 6,
-    borderWidth: 1,
-    borderRadius: 5,
+    borderWidth: moderateScale(1),
+    borderRadius: moderateScale(5),
     backgroundColor: Theme.white,
     borderColor: Theme.primary,
-    height: 70,
+    height: moderateScale(70),
     width: '85%',
   },
   textStyle: {
     color: Theme.accent,
-    fontSize: 40,
+    fontSize: moderateScale(40),
   },
   resetTextStyle: {
     color: Theme.white,
-    fontSize: 20,
+    fontSize: moderateScale(20),
     backgroundColor: Theme.accent,
-    borderRadius: 10,
-    height: 40,
-    width: 100,
-    paddingVertical: 5,
+    borderRadius: moderateScale(10),
+    height: moderateScale(40),
+    width: moderateScale(100),
+    paddingVertical: moderateScale(5),
     textAlign: 'center',
   },
 });
