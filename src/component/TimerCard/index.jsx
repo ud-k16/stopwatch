@@ -4,7 +4,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import useClock from '../../hooks/useClock';
 import moderateScale from '../../utils/scale';
 
-const TimerCard = ({userDefinedTime, label}) => {
+const TimerCard = ({userDefinedTime, label = 'Clock'}) => {
   const {
     toggleTimer,
     resetTimer,
