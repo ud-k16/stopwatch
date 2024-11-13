@@ -45,7 +45,7 @@ const useClock = ({userDefinedTime, label}) => {
 
   const resetTimer = () => {
     stopTimer();
-    setTime(defaultTime);
+    setTime(userDefinedTime);
   };
 
   useEffect(() => {
