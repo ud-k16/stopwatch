@@ -26,7 +26,8 @@ const TimerCard = ({userDefinedTime}) => {
         <AntDesign
           name="playcircleo"
           size={44}
-          color={Theme.accent}
+          color={value == 0 ? Theme.grey : Theme.accent}
+          disabled={value == 0}
           onPress={() => {
             toggleTimer();
           }}
