@@ -9,12 +9,16 @@ const useHome = () => {
   const showModal = () => setModalVisible(true);
   const hideModal = () => setModalVisible(false);
 
-  const startClock = userDefinedTime => {
+  const startClock = ({userDefinedTime, label}) => {
     const count = clock.length;
 
     if (count < 5) {
       const newClock = (
-        <TimerCard key={count - 1} userDefinedTime={userDefinedTime} />
+        <TimerCard
+          key={count - 1}
+          userDefinedTime={userDefinedTime}
+          label={label}
+        />
       );
       setClock([...clock, newClock]);
     } else {
@@ -22,7 +26,11 @@ const useHome = () => {
 
       if (index != -1) {
         const newClock = (
-          <TimerCard key={index} userDefinedTime={userDefinedTime} />
+          <TimerCard
+            key={index}
+            userDefinedTime={userDefinedTime}
+            label={label}
+          />
         );
         clock.splice(index, 1, newClock);
         setClock([...clock]);

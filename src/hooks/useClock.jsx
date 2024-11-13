@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState} from 'react';
 
-const useClock = ({userDefinedTime}) => {
+const useClock = ({userDefinedTime, label = 'Clock'}) => {
   // setting default timer to 20 seconds for 5 timers
   const defaultTime = useRef(20).current;
   const [timer, setTimer] = useState(20);
@@ -32,8 +32,7 @@ const useClock = ({userDefinedTime}) => {
   };
 
   const timerElapsed = () => {
-    console.log(`timer  elapsed`);
-    alert(`Timer Set for ${userDefinedTime} has elapsed`);
+    alert(`Timer Set for ${label} with ${userDefinedTime} has elapsed`);
     stopTimer();
   };
 
