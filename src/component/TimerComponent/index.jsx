@@ -54,9 +54,15 @@ const TimerComponent = ({
             value={value}
             autoFocus={true}
             keyboardType="number-pad"
+            onKeyPress={event => {
+              const inputChar = event.nativeEvent.key;
+              if (/[\s\.]/g.test(inputChar))
+                alert('decimal or spaces not alloowed');
+            }}
             style={styles.userInputStyle}
             onChangeText={text => {
-              setValue(text);
+              // removing decimal or space
+              setValue(text.replace(/[\s\.]/g, ''));
             }}
           />
           <Text style={styles.unitStyle}>seconds</Text>
@@ -66,7 +72,7 @@ const TimerComponent = ({
           onPress={() => {
             hideModal();
             start({
-              userDefinedTime: Number(value.replace(/[\s\.]/g, '')),
+              userDefinedTime: Number(value),
               label: clockLabel,
             });
             // resetting value for next timer
