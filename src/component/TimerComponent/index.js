@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 import {Theme} from '../../utils/theme';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const TimerComponent = ({visible, hideModal, start, defaultValue = 20}) => {
@@ -40,6 +40,8 @@ const TimerComponent = ({visible, hideModal, start, defaultValue = 20}) => {
           onPress={() => {
             hideModal();
             start(Number(value));
+            // resetting value for next timer
+            setValue(defaultValue?.toString());
           }}>
           <Text style={styles.buttonTextStyle}>START</Text>
         </Pressable>
